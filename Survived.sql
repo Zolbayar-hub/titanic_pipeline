@@ -2,6 +2,7 @@
 -- MAGIC %python
 -- MAGIC import pandas as pd
 -- MAGIC from pyspark.sql import functions as F
+-- MAGIC # added comment
 
 -- COMMAND ----------
 
