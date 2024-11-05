@@ -5,10 +5,19 @@ from pyspark.sql import functions as F
 # COMMAND ----------
 
 df = spark.sql('select * from Titanic')
-male_survivors = df.filter(F.col('Sex') == 'male').groupBy('Survived').count()
+display(df)
+
+# COMMAND ----------
+
+df = spark.sql('select * from Titanic')
+male_survivors = df.filter(F.col('Sex') == 'male').where((F.col('PassengerId')==1) | (F.col('PassengerId')==5))
 display(male_survivors)
 
 # COMMAND ----------
 
-# test commit
-male_survivors.write.mode('overwrite').saveAsTable("male_survivors")
+# MAGIC %sql
+# MAGIC describe history "dbfs:/mnt/datastoragezoloo/titanic/male_survivors"
+
+# COMMAND ----------
+
+newDF.write.mode("overwrite").save("dbfs:/mnt/datastoragezoloo/titanic/male_survivors")
