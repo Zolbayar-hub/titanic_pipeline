@@ -10,4 +10,5 @@ display(male_survivors)
 
 # COMMAND ----------
 
+# test commit
 male_survivors.write.mode('overwrite').saveAsTable("male_survivors")
