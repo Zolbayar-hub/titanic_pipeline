@@ -42,3 +42,20 @@ df = df.withColumn(
   when(col("PassengerId") == 1, "Byamba Enkhbat").otherwise(col("Name"))
 )
 display(df)
+
+# COMMAND ----------
+
+df = df[["PassengerId", "Name", "Fare", "Pclass"]]
+
+# COMMAND ----------
+
+from pyspark.sql.functions import col, when
+
+df = df.withColumn(
+  "Fare",
+  when(col("PassengerId") == 4, 40).otherwise(col("Fare"))
+).withColumn(
+  "Pclass",
+  when(col("PassengerId") == 4, 1).otherwise(col("Pclass"))
+)
+display(df)
